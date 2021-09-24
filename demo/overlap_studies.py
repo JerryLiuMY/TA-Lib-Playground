@@ -2,6 +2,7 @@ import talib
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas_datareader as pdr
+from tools.utils import get_price
 
 
 class OverlapStudies:
