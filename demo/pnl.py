@@ -11,7 +11,17 @@ aapl["Close"].plot()
 
 def plot_aapl():
     sma200 = talib.SMA(aapl["Close"].values, 200)
-    plt.plot(sma200, label="SMA200")
-    plt.plot(aapl["Close"].values, label="Price")
-    plt.legend(loc="best")
+    upperband, middleband, lowerband = talib.BBANDS(aapl["Close"].values, 100, 1, 1)
+    fig, axes = plt.subplots(1, 2)
+    axes[0].plot(sma200, label="SMA200")
+    axes[0].plot(aapl["Close"].values, label="Price")
+    axes[0].legend(loc="best")
+
+    axes[1].plot(sma200, label="SMA200")
+    axes[1].plot(upperband, label="Upper Band")
+    axes[1].plot(middleband, label="Middle Band")
+    axes[1].plot(lowerband, label="Lower Band")
+    axes[1].legend(loc="best")
+
+    return fig
 
