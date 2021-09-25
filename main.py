@@ -1,2 +1,2 @@
-from demo.pnl import plot_aapl
+from usage.pnl import plot_aapl
 plot_aapl()
