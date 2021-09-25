@@ -30,7 +30,7 @@ def plot(data_df, holdings_df):
     index = data_df.index
     fig, axes = plt.subplots(3, 1, figsize=(12, 8))
 
-    # Price 
+    # Price
     axes[0].plot(index, data_df["AdjClose"], label="AdjClose")
     axes[0].set_xlabel("Date")
     axes[0].set_ylabel("AdjClose")
@@ -71,5 +71,5 @@ def _get_bbp(data_df):
 
 
 if __name__ == "__main__":
-    start, end = "2015-04-22", "2017-04-22"
-    ticker, max_holding = "AAPL", 100
+    ticker, start, end = "AAPL", "2015-04-22", "2017-04-22"
+    max_holding = 100
