@@ -16,7 +16,6 @@ class VolatilityIndicators:
     def atr(self, timeperiod: int = 14):
         """Average True Range
         :param timeperiod: moving average window
-        :return: moving average output
         """
         atr = talib.ATR(self.high, self.low, self.close, timeperiod)
 
@@ -32,9 +31,7 @@ class VolatilityIndicators:
         return natr
 
     def trange(self):
-        """True Range
-        :return: moving average output
-        """
-        sma_output = talib.NATR(self.high, self.low, self.close)
+        """True Range"""
+        trange = talib.TRANGE(self.high, self.low, self.close)
 
-        return sma_output
+        return trange
