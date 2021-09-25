@@ -1,4 +1,4 @@
-# Technical Analysis Playground
+# TA-Lib Playground
 ### Indicator Groups
 
 * Overlap Studies
