@@ -198,4 +198,4 @@ VAR                  Variance
 ```
 
 ## Demo
-![Alt text](/fig/demo_1.png?raw=true "TA-Lib Demo")
+![Alt text](/demo/fig/demo_1.png?raw=true "TA-Lib Demo")
