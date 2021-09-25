@@ -1,6 +1,6 @@
 import os
 
-HOME = "/Users/mingyu/Desktop/TA-Lib-playground"
+HOME = "/Users/mingyu/Desktop"
 WORK_DIR = os.path.join(HOME, "TA-Lib-playground")
 DATA_DIR = os.path.join(HOME, "data")
 
