@@ -15,7 +15,7 @@ import numpy as np
 class OverlapStudies:
     def __init__(self, close: np.array, low: np.array, high: np.array):
         """
-        :param close: time series
+        :param close: close time series
         """
         self.close = close
         self.low = low
@@ -27,7 +27,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        sma_output = talib.SMA(self.series, timeperiod)
+        sma_output = talib.SMA(self.close, timeperiod)
 
         return sma_output
 
@@ -36,7 +36,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        wma_output = talib.WMA(self.series, timeperiod)
+        wma_output = talib.WMA(self.close, timeperiod)
 
         return wma_output
 
@@ -45,7 +45,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        ema_output = talib.EMA(self.series, timeperiod)
+        ema_output = talib.EMA(self.close, timeperiod)
 
         return ema_output
 
@@ -54,7 +54,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        dema_output = talib.DEMA(self.series, timeperiod)
+        dema_output = talib.DEMA(self.close, timeperiod)
 
         return dema_output
 
@@ -63,7 +63,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        dema_output = talib.TEMA(self.series, timeperiod)
+        dema_output = talib.TEMA(self.close, timeperiod)
 
         return dema_output
 
@@ -72,7 +72,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        trima_output = talib.TRIMA(self.series, timeperiod)
+        trima_output = talib.TRIMA(self.close, timeperiod)
 
         return trima_output
 
@@ -81,7 +81,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        kama_output = talib.KAMA(self.series, timeperiod)
+        kama_output = talib.KAMA(self.close, timeperiod)
 
         return kama_output
 
@@ -90,7 +90,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        mama_output = talib.KAMA(self.series, timeperiod)
+        mama_output = talib.KAMA(self.close, timeperiod)
 
         return mama_output
 
@@ -99,7 +99,7 @@ class OverlapStudies:
         :param timeperiod: moving average window
         :return: moving average output
         """
-        t3_output = talib.KAMA(self.series, timeperiod)
+        t3_output = talib.KAMA(self.close, timeperiod)
 
         return t3_output
 
@@ -109,7 +109,7 @@ class OverlapStudies:
         :param matype: moving average type
         :return: moving average output
         """
-        ma_output = talib.MA(self.series, timeperiod, matype)
+        ma_output = talib.MA(self.close, timeperiod, matype)
 
         return ma_output
 
@@ -120,7 +120,7 @@ class OverlapStudies:
         :param matype: moving average type
         :return: moving average output
         """
-        mavp_output = talib.MAVP(self.series, minperiod, maxperiod, matype)
+        mavp_output = talib.MAVP(self.close, minperiod, maxperiod, matype)
 
         return mavp_output
 
@@ -133,7 +133,7 @@ class OverlapStudies:
         :param matype: moving average type
         :return: upperband, middleband, lowerband
         """
-        upperband, middleband, lowerband = talib.BBANDS(self.series, timeperiod, nbdevup, nbdevdn, matype)
+        upperband, middleband, lowerband = talib.BBANDS(self.close, timeperiod, nbdevup, nbdevdn, matype)
 
         return upperband, middleband, lowerband
 
@@ -141,7 +141,7 @@ class OverlapStudies:
         """Hilbert Transform - Instantaneous Trendline
         :return: trendline
         """
-        trendline = talib.HT_TRENDLINE(self.series)
+        trendline = talib.HT_TRENDLINE(self.close)
 
         return trendline
 
@@ -183,14 +183,12 @@ class OverlapStudies:
         """MidPoint over period
         :param timeperiod: moving average window
         """
-        midpoint = talib.MIDPOINT(self.series, timeperiod)
+        midpoint = talib.MIDPOINT(self.close, timeperiod)
 
         return midpoint
 
     def midprice(self, timeperiod: int):
         """Midpoint Price over period
-        :param high: high series
-        :param low: low series
         :param timeperiod: moving average window
         """
         midprice = talib.MIDPRICE(self.high, self.low, timeperiod)
