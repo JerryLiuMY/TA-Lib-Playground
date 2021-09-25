@@ -1,8 +1,5 @@
 import talib
 import numpy as np
-import matplotlib.pyplot as plt
-import pandas_datareader as pdr
-from tools.utils import get_price
 
 # SMA = 0
 # EMA = 1
@@ -16,11 +13,11 @@ from tools.utils import get_price
 
 
 class OverlapStudies:
-    def __init__(self, series: np.array, low: np.array, high: np.array):
+    def __init__(self, close: np.array, low: np.array, high: np.array):
         """
-        :param series: time series
+        :param close: time series
         """
-        self.series = series
+        self.close = close
         self.low = low
         self.high = high
 
