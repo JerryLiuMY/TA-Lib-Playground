@@ -7,6 +7,22 @@
 </p>
 
 
+## Supported Indicators and Functions
+
+We can show all the TA functions supported by TA-Lib, either as a ``list`` or
+as a ``dict`` sorted by group (e.g. "Overlap Studies", "Momentum Indicators",
+etc):
+
+```python
+import talib
+
+# list of functions
+print talib.get_functions()
+
+# dict of functions by group
+print talib.get_function_groups()
+```
+
 ### Indicator Groups
 
 * Overlap Studies
