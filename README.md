@@ -1,4 +1,28 @@
-# TA-Lib Playground
+# TA-Lib Playground 
+
+<p align="left">
+    <a href="https://www.python.org/">
+        <img src="https://img.shields.io/badge/python-v3-brightgreen.svg"
+            alt="python"></a> &nbsp;
+</p>
+
+
+## Supported Indicators and Functions
+
+We can show all the TA functions supported by TA-Lib, either as a ``list`` or
+as a ``dict`` sorted by group (e.g. "Overlap Studies", "Momentum Indicators",
+etc):
+
+```python
+import talib
+
+# list of functions
+print talib.get_functions()
+
+# dict of functions by group
+print talib.get_function_groups()
+```
+
 ### Indicator Groups
 
 * Overlap Studies
@@ -172,3 +196,6 @@ STDDEV               Standard Deviation
 TSF                  Time Series Forecast
 VAR                  Variance
 ```
+
+## Demo
+![Alt text](/demo/fig/demo_1.png?raw=true "TA-Lib Demo")
