@@ -22,7 +22,7 @@ class OverlapStudies:
         self.high = high
 
     # Moving average #
-    def sma(self, timeperiod: int):
+    def sma(self, timeperiod: int = 30):
         """Simple Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -31,7 +31,7 @@ class OverlapStudies:
 
         return sma_output
 
-    def wma(self, timeperiod: int):
+    def wma(self, timeperiod: int = 30):
         """Weighted Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -40,7 +40,7 @@ class OverlapStudies:
 
         return wma_output
 
-    def ema(self, timeperiod: int):
+    def ema(self, timeperiod: int = 30):
         """Exponential Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -49,7 +49,7 @@ class OverlapStudies:
 
         return ema_output
 
-    def dema(self, timeperiod: int):
+    def dema(self, timeperiod: int = 30):
         """Double Exponential Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -58,7 +58,7 @@ class OverlapStudies:
 
         return dema_output
 
-    def tema(self, timeperiod):
+    def tema(self, timeperiod: int = 30):
         """Triple Exponential Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -67,7 +67,7 @@ class OverlapStudies:
 
         return dema_output
 
-    def trima(self, timeperiod):
+    def trima(self, timeperiod: int = 30):
         """Triangular Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -76,7 +76,7 @@ class OverlapStudies:
 
         return trima_output
 
-    def kama(self, timeperiod):
+    def kama(self, timeperiod: int = 30):
         """Kaufman Adaptive Moving Average
         :param timeperiod: moving average window
         :return: moving average output
@@ -85,25 +85,27 @@ class OverlapStudies:
 
         return kama_output
 
-    def mama(self, timeperiod):
+    def mama(self, fastlimit: float = 0.5, slowlimit: float = 0.05):
         """MESA Adaptive Moving Average
-        :param timeperiod: moving average window
-        :return: moving average output
+        :param fastlimit:
+        :param slowlimit:
+        :return:
         """
-        mama_output = talib.KAMA(self.close, timeperiod)
+        mama_output, fama_output = talib.KAMA(self.close, fastlimit, slowlimit)
 
-        return mama_output
+        return mama_output, fama_output
 
-    def t3(self, timeperiod):
+    def t3(self, timeperiod: int = 5, vfactor: float = 0.7):
         """Triple Exponential Moving Average (T3)
         :param timeperiod: moving average window
-        :return: moving average output
+        :param vfactor: moving average window
+        :return:
         """
-        t3_output = talib.KAMA(self.close, timeperiod)
+        t3_output = talib.T3(self.close, timeperiod, vfactor)
 
         return t3_output
 
-    def ma(self, timeperiod: int, matype: int):
+    def ma(self, timeperiod: int = 30, matype: int = 0):
         """Moving average
         :param timeperiod: moving average window
         :param matype: moving average type
@@ -113,7 +115,7 @@ class OverlapStudies:
 
         return ma_output
 
-    def mavp(self, minperiod, maxperiod, matype):
+    def mavp(self, minperiod: int = 2, maxperiod: int = 30, matype: int = 0):
         """Moving average with variable period
         :param minperiod: moving average min period
         :param maxperiod: moving average max period
@@ -125,7 +127,7 @@ class OverlapStudies:
         return mavp_output
 
     # indicator lines #
-    def bbands(self, timeperiod: int, nbdevup: float, nbdevdn: float, matype: int):
+    def bbands(self, timeperiod: int = 5, nbdevup: float = 2, nbdevdn: float = 2, matype: int = 0):
         """Bollinger Bands
         :param timeperiod: moving average window
         :param nbdevup: number of non-biased standard deviations above the mean
@@ -145,7 +147,7 @@ class OverlapStudies:
 
         return trendline
 
-    def sar(self, acceleration: float, maximum: float):
+    def sar(self, acceleration: float = 0.02, maximum: float = 0.2):
         """Parabolic SAR
         :param acceleration: acceleration factor
         :param maximum: sensitivity
@@ -179,7 +181,7 @@ class OverlapStudies:
         return sarext
 
     # midpoint & midprice #
-    def midpoint(self, timeperiod: int):
+    def midpoint(self, timeperiod: int = 14):
         """MidPoint over period
         :param timeperiod: moving average window
         """
@@ -187,7 +189,7 @@ class OverlapStudies:
 
         return midpoint
 
-    def midprice(self, timeperiod: int):
+    def midprice(self, timeperiod: int = 14):
         """Midpoint Price over period
         :param timeperiod: moving average window
         """

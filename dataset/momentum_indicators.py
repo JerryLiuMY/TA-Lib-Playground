@@ -18,7 +18,7 @@ class MomentumIndicators:
     def mom(self, timeperiod: int = 10):
         """
         Momentum
-        :param timeperiod:
+        :param timeperiod: time window size
         """
         mom = talib.MINUS_DM(self.close, timeperiod)
 
@@ -26,7 +26,7 @@ class MomentumIndicators:
 
     def adx(self, timeperiod: int = 14):
         """Average Directional Movement Index
-        :param timeperiod: moving average window
+        :param timeperiod: window size
         """
         adx = talib.ADX(self.high, self.low, self.close, timeperiod)
 
@@ -200,12 +200,133 @@ class MomentumIndicators:
 
         return mom
 
-    def plus_dm(self, timeperiod: int = 14):
+    def ppo(self, fastperiod: int = 12, slowperiod: int = 26, matype: int = 0):
         """
         Plus Directional Movement
-        :param timeperiod:
+        :param fastperiod:
+        :param slowperiod:
+        :param matype:
         """
-        mom = talib.MINUS_DM(self.high, self.low, timeperiod)
+        ppo = talib.PPO(self.close, fastperiod, slowperiod, matype)
 
-        return mom
+        return ppo
 
+    def roc(self, timeperiod: int = 10):
+        """Rate of change : ((real/prevPrice)-1)*100
+        :param timeperiod:
+        :return:
+        """
+        roc = talib.ROC(self.close, timeperiod)
+
+        return roc
+
+    def rocp(self, timeperiod: int = 10):
+        """Rate of change Percentage: (real-prevPrice)/prevPrice
+        :param timeperiod:
+        :return:
+        """
+        rocp = talib.ROCP(self.close, timeperiod)
+
+        return rocp
+
+    def rocr(self, timeperiod: int = 10):
+        """Rate of change ratio: (real/prevPrice)
+        :param timeperiod:
+        :return:
+        """
+        rocr = talib.ROCR(self.close, timeperiod)
+
+        return rocr
+
+    def rocr100(self, timeperiod: int = 10):
+        """Rate of change ratio 100 scale: (real/prevPrice)*100
+        :param timeperiod:
+        :return:
+        """
+        rocr100 = talib.ROCR100(self.close, timeperiod)
+
+        return rocr100
+
+    def rsi(self, timeperiod: int = 14):
+        """Relative Strength Index
+        :param timeperiod:
+        :return:
+        """
+        rsi = talib.RSI(self.close, timeperiod)
+
+        return rsi
+
+    def stoch(
+            self, fastk_period: int = 5, slowk_period: int = 3, slowk_matype: int = 0,
+            slowd_period: int = 3, slowd_matype: int = 0
+    ):
+        """Stochastic
+        :param fastk_period:
+        :param slowk_period:
+        :param slowk_matype:
+        :param slowd_period:
+        :param slowd_matype:
+        :return:
+        """
+        slowk, slowd = talib.STOCH(
+            self.high, self.low, self.close, fastk_period, slowk_period,
+            slowk_matype, slowd_period, slowd_matype
+        )
+
+        return slowk, slowd
+
+    def stochf(self, fastk_period: int = 5, fastd_period: int = 3, fastd_matype: int = 0):
+        """Stochastic Fast
+        :param fastk_period:
+        :param fastd_period:
+        :param fastd_matype:
+        :return:
+        """
+        fastk, fastd = talib.STOCHF(
+            self.high, self.low, self.close, fastk_period, fastd_period, fastd_matype
+        )
+
+        return fastk, fastd
+
+    def stochrsi(self, timeperiod: int = 14, fastk_period: int = 5, fastd_period: int = 3, fastd_matype: int = 0):
+        """Stochastic Relative Strength Index
+        :param timeperiod:
+        :param fastk_period:
+        :param fastd_period:
+        :param fastd_matype:
+        :return:
+        """
+        fastk, fastd = talib.STOCHRSI(
+            self.high, self.low, self.close, timeperiod, fastk_period, fastd_period, fastd_matype
+        )
+
+        return fastk, fastd
+
+    def trix(self, timeperiod: int = 30):
+        """1-day Rate-Of-Change (ROC) of a Triple Smooth EMA
+        :param timeperiod:
+        :return:
+        """
+        fastk, fastd = talib.TRIX(self.close, timeperiod)
+
+        return fastk, fastd
+
+    def ultosc(self, timeperiod1: int = 7, timeperiod2: int = 14, timeperiod3: int = 28):
+        """Ultimate Oscillator
+        :param timeperiod1:
+        :param timeperiod2:
+        :param timeperiod3:
+        :return:
+        """
+        ultosc = talib.ULTOSC(self.high, self.low, self.close, timeperiod1, timeperiod2, timeperiod3)
+
+        return ultosc
+
+    def willr(self, timeperiod: int = 14):
+        """Williams' %R
+        :param timeperiod:
+        :return:
+        """
+        willr = talib.WILLR(self.high, self.low, self.close, timeperiod)
+
+        return willr

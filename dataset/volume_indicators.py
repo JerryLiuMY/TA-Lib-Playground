@@ -20,8 +20,10 @@ class VolumeIndicators:
 
         return ad
 
-    def adosc(self, fastperiod, slowperiod):
+    def adosc(self, fastperiod: int = 3, slowperiod: int = 10):
         """Chaikin A/D Oscillator
+        :param: fastperiod:
+        :param: slowperiod:
         :return: Chaikin A/D Oscillator
         """
         adosc = talib.ADOSC(self.high, self.low, self.close, self.volume, fastperiod, slowperiod)
