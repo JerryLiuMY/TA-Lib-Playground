@@ -14,7 +14,7 @@ class PatternRecognition:
 
     def candlestick(self):
         """Candlestick patterns
-        :return: [int] values are -100, 0 or 100
+        :return: [np.array] 2-dimensional array containing -100, 0 or 100 values
         """
         candlestick_arr = np.array([
             talib.CDL2CROWS(self.open, self.high, self.low, self.close),  # Two Crows
