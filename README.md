@@ -1,29 +1,13 @@
 # TA-Lib Playground
 
-<p align="center">
-    <img width=60% src="https://github.com/robertmartin8/PyPortfolioOpt/blob/master/media/logo_v1.png?raw=true">
-</p>
-
 <!-- buttons -->
 <p align="center">
     <a href="https://www.python.org/">
         <img src="https://img.shields.io/badge/python-v3-brightgreen.svg"
             alt="python"></a> &nbsp;
-    <a href="https://pypi.org/project/PyPortfolioOpt/">
-        <img src="https://img.shields.io/badge/pypi-v1.4.2-brightgreen.svg"
-            alt="pypi"></a> &nbsp;
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg"
             alt="MIT license"></a> &nbsp;
-    <a href="https://github.com/robertmartin8/PyPortfolioOpt/actions">
-        <img src="https://github.com/robertmartin8/PyPortfolioOpt/workflows/pytest/badge.svg?event=push"
-            alt="build"></a> &nbsp;
-    <a href="https://pepy.tech/project/pyportfolioopt">
-        <img src="https://pepy.tech/badge/pyportfolioopt"
-            alt="downloads"></a> &nbsp;
-    <a href="https://mybinder.org/v2/gh/robertmartin8/pyportfolioopt/master/?filepath=cookbook">
-      <img src="https://mybinder.org/badge_logo.svg"
-            alt="binder"></a> &nbsp;
 </p>
 
 
