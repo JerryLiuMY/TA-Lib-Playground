@@ -1,17 +1,19 @@
 import pandas_datareader.data as web
 import pandas as pd
 import numpy as np
-from talib import RSI, BBANDS
+from talib import RSI, BBANDS, SMA
 import matplotlib.pyplot as plt
 from global_settings import API_KEY
+import seaborn as sns
+sns.set()
 
 
 def get_df(ticker, start, end, max_holding):
     data_df = web.DataReader(name=ticker, data_source="quandl", start=start, end=end, api_key=API_KEY).iloc[::-1]
     data_df.dropna(inplace=True)
     close, index = data_df["AdjClose"].values, data_df.index
-    bbands = BBANDS(close, timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)
-    data_df["BB_up"], data_df["BB_mid"], data_df["BB_low"] = bbands
+    data_df["BB_up"], data_df["BB_mid"], data_df["BB_low"] = BBANDS(close, timeperiod=20, nbdevup=2, nbdevdn=2)
+    data_df["SMA_10"], data_df["SMA_50"] = SMA(close, 10), SMA(close, 50)
     data_df["RSI"] = RSI(close, timeperiod=14)
     data_df["BBP"] = _get_bbp(data_df)
 
@@ -31,9 +33,12 @@ def plot(data_df, holdings_df):
     fig, axes = plt.subplots(3, 1, figsize=(12, 8))
 
     # Price
-    axes[0].plot(index, data_df["AdjClose"], label="AdjClose")
+    axes[0].plot(index, data_df["AdjClose"], label="Adj_Close")
+    axes[0].plot(index, data_df["SMA_10"], label="MA_10")
+    axes[0].plot(index, data_df["SMA_50"], label="MA_50")
+    axes[0].legend(loc="upper left")
     axes[0].set_xlabel("Date")
-    axes[0].set_ylabel("AdjClose")
+    axes[0].set_ylabel("Adj Close")
     axes[0].grid()
     for day, holding in holdings_df.iterrows():
         order = holding["Order"]
@@ -45,17 +50,20 @@ def plot(data_df, holdings_df):
     # RSI
     axes[1].plot(index, data_df["RSI"], label="RSI")
     axes[1].fill_between(index, y1=30, y2=70, color="#adccff", alpha=0.3)
+    axes[0].legend(loc="upper left")
     axes[1].set_xlabel("Date")
     axes[1].set_ylabel("RSI")
     axes[1].grid()
 
     # BBANDS
+    axes[2].plot(index, data_df["AdjClose"], label="Adj_Close")
     axes[2].plot(index, data_df["BB_up"], label="BB_up")
-    axes[2].plot(index, data_df["AdjClose"], label="AdjClose")
     axes[2].plot(index, data_df["BB_low"], label="BB_low")
+    axes[2].plot(index, data_df["BB_mid"], label="BB_mid")
     axes[2].fill_between(index, y1=data_df["BB_low"], y2=data_df["BB_up"], color="#adccff", alpha=0.3)
     axes[2].set_xlabel("Date")
     axes[2].set_ylabel("Bollinger Bands")
+    axes[2].legend(loc="upper left")
     axes[2].grid()
     fig.tight_layout()
 

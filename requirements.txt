@@ -3,3 +3,4 @@ matplotlib
 pandas_datareader
 yfinance
 quandl
+seaborn
