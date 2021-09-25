@@ -1,7 +1,4 @@
-# TA-Lib Playground
-
-<!-- buttons -->
-<p align="center">
+# TA-Lib Playground <p align="center">
     <a href="https://www.python.org/">
         <img src="https://img.shields.io/badge/python-v3-brightgreen.svg"
             alt="python"></a> &nbsp;
