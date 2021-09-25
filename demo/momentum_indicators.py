@@ -13,12 +13,13 @@ import numpy as np
 
 
 class MomentumIndicators:
-    def __init__(self, high: np.array, low: np.array, close: np.array):
+    def __init__(self, open: np.array, high: np.array, low: np.array, close: np.array):
         """
         :param high: high time series
         :param low: low time series
         :param close: close time series
         """
+        self.open = open
         self.high = high
         self.low = low
         self.close = close
@@ -48,3 +49,33 @@ class MomentumIndicators:
         adxr = talib.ADXR(self.close, fastperiod, slowperiod, matype)
 
         return adxr
+
+    def aroon(self, timeperiod: int = 14):
+        """Aroon
+        :param timeperiod: moving average window
+        """
+        aroondown, aroonup = talib.AROON(self.high, self.low, timeperiod)
+
+        return aroondown, aroonup
+
+    def aroonosc(self, timeperiod: int = 14):
+        """Aroon Oscillator
+        :param timeperiod: moving average window
+        """
+        aroondown, aroonup = talib.AROONOSC(self.high, self.low, timeperiod)
+
+        return aroondown, aroonup
+
+    def bop(self):
+        """Balance Of Power"""
+        bop = talib.BOP(self.open, self.high, self.low, self.close)
+
+        return bop
+
+    def cci(self, timeperiod):
+        """Commodity Channel Index
+        :param timeperiod: moving average window
+        """
+        cci = talib.BOP(self.high, self.low, self.close, timeperiod)
+
+        return cci

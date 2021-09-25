@@ -10,36 +10,31 @@ class CycleIndicators:
         self.close = close
 
     def ht_dcperiod(self):
-        """Hilbert Transform - Dominant Cycle Period
-        """
+        """Hilbert Transform - Dominant Cycle Period"""
         ht_dcperiod = talib.HT_DCPERIOD(self.close)
 
         return ht_dcperiod
 
     def ht_dephase(self):
-        """Hilbert Transform - Dominant Cycle Phase
-        """
+        """Hilbert Transform - Dominant Cycle Phase"""
         ht_dephase = talib.HT_DCPHASE(self.close)
 
         return ht_dephase
 
     def ht_phasor(self):
-        """Hilbert Transform - Phasor Components
-        """
+        """Hilbert Transform - Phasor Components"""
         inphase, quadrature = talib.HT_PHASOR(self.close)
 
         return inphase, quadrature
 
     def ht_sine(self):
-        """Hilbert Transform - SineWave
-        """
+        """Hilbert Transform - SineWave"""
         sine, leadsine = talib.HT_PHASOR(self.close)
 
         return sine, leadsine
 
     def ht_trendmode(self):
-        """Hilbert Transform - Trend vs Cycle Mode
-        """
+        """Hilbert Transform - Trend vs Cycle Mode"""
         ht_trendmode = talib.HT_PHASOR(self.close)
 
         return ht_trendmode
