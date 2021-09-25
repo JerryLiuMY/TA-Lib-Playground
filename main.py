@@ -9,4 +9,4 @@ if __name__ == "__main__":
     data_df = get_data_df(ticker, start, end)
     holdings_df = get_holdings_df(data_df, max_holding)
     fig = visualize(data_df, holdings_df)
-    fig.savefig(os.path.join(WORK_DIR, "fig", "demo_1.pdf"))
+    fig.savefig(os.path.join(WORK_DIR, "fig", "demo_1.png"), dpi=300)
