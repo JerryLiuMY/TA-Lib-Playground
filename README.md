@@ -1,4 +1,4 @@
-# Technical Analysis
+# Technical Analysis Playground
 ### Indicator Groups
 
 * Overlap Studies
