@@ -7,9 +7,9 @@ from global_settings import API_KEY
 
 
 def get_data_df(ticker, start, end):
-    data_df = web.DataReader(name=ticker, data_source="quandl", start=start, end=end, api_key=API_KEY).iloc[::-1]
+    data_df = web.DataReader(tickers=ticker, data_source="quandl", start=start, end=end, api_key=API_KEY).iloc[::-1]
     data_df.dropna(inplace=True)
-    close = data_df["AdjClose"].values
+    close = data_df["Adj Close"].values
     data_df["BB_up"], data_df["BB_mid"], data_df["BB_low"] = BBANDS(close, timeperiod=20, nbdevup=2, nbdevdn=2)
     data_df["BBP"] = _get_bbp(data_df)
     data_df["SMA_10"], data_df["SMA_50"] = SMA(close, 10), SMA(close, 50)
@@ -36,7 +36,7 @@ def visualize(data_df, holdings_df):
     fig, axes = plt.subplots(3, 1, figsize=(12, 8))
 
     # Price
-    axes[0].plot(index, data_df["AdjClose"], label="Adj_Close")
+    axes[0].plot(index, data_df["Adj Close"], label="Adj_Close")
     axes[0].plot(index, data_df["SMA_10"], label="MA_10")
     axes[0].plot(index, data_df["SMA_50"], label="MA_50")
     axes[0].legend(loc="upper left")
@@ -46,9 +46,9 @@ def visualize(data_df, holdings_df):
     for day, holding in holdings_df.iterrows():
         order = holding["Order"]
         if order > 0:
-            axes[0].scatter(x=day, y=data_df.loc[day, "AdjClose"], color="green")
+            axes[0].scatter(x=day, y=data_df.loc[day, "Adj Close"], color="green")
         elif order < 0:
-            axes[0].scatter(x=day, y=data_df.loc[day, "AdjClose"], color="red")
+            axes[0].scatter(x=day, y=data_df.loc[day, "Adj Close"], color="red")
 
     # RSI & MOM
     axes[1].plot(index, data_df["RSI"], label="RSI")
@@ -64,7 +64,7 @@ def visualize(data_df, holdings_df):
     ax_.set_ylabel("MOM")
 
     # BBANDS
-    axes[2].plot(index, data_df["AdjClose"], label="Adj_Close")
+    axes[2].plot(index, data_df["Adj Close"], label="Adj_Close")
     axes[2].plot(index, data_df["BB_up"], label="BB_up")
     axes[2].plot(index, data_df["BB_low"], label="BB_low")
     axes[2].plot(index, data_df["BB_mid"], label="BB_mid")
@@ -79,7 +79,7 @@ def visualize(data_df, holdings_df):
 
 
 def _get_bbp(data_df):
-    close = data_df["AdjClose"].values
+    close = data_df["Adj Close"].values
     up, mid, low = BBANDS(close, timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)
     bbp = (close - low) / (up - low)
 
