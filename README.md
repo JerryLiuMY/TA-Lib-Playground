@@ -6,10 +6,6 @@
             alt="python"></a> &nbsp;
 </p>
 
-
-## Demo
-![Alt text](/demo/fig/demo.png?raw=true "TA-Lib Demo")
-
 ## Supported Indicators and Functions
 
 We can show all the TA functions supported by TA-Lib, either as a ``list`` or
@@ -199,3 +195,7 @@ STDDEV               Standard Deviation
 TSF                  Time Series Forecast
 VAR                  Variance
 ```
+
+
+## Demo
+![Alt text](/demo/fig/demo.png?raw=true "TA-Lib Demo")
