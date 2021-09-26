@@ -5,7 +5,7 @@ from time import sleep
 yf.pdr_override()
 
 
-def get_price(ticker, start_date, end_date):
+def get_yahoo(ticker, start_date, end_date):
     """Gets sp500 price dataS"""
     i = 1
     try:
@@ -20,6 +20,5 @@ def get_price(ticker, start_date, end_date):
             print("Tried 5 times, Yahoo error. Trying after 2 minutes")
             sleep(120)
             data_df = pdr.get_data_yahoo(ticker, start_date, end_date)
-    close_price = data_df["Adj Close"]
 
-    return close_price
+    return data_df

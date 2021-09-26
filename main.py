@@ -1,5 +1,5 @@
-from demo.demo_1 import get_data_df, get_holdings_df
-from demo.demo_1 import visualize
+from demo.visualization import get_data_df, get_holdings_df
+from demo.visualization import visualize
 from global_settings import WORK_DIR
 import os
 
