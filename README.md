@@ -8,7 +8,7 @@
 
 
 ## Demo
-![Alt text](/demo/fig/demo_1.png?raw=true "TA-Lib Demo")
+![Alt text](/demo/fig/demo.png?raw=true "TA-Lib Demo")
 
 ## Supported Indicators and Functions
 
