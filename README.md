@@ -6,7 +6,6 @@
             alt="python"></a> &nbsp;
 </p>
 
-
 ## Supported Indicators and Functions
 
 We can show all the TA functions supported by TA-Lib, either as a ``list`` or
@@ -197,5 +196,6 @@ TSF                  Time Series Forecast
 VAR                  Variance
 ```
 
+
 ## Demo
-![Alt text](/demo/fig/demo_1.png?raw=true "TA-Lib Demo")
+![Alt text](/demo/fig/demo.png?raw=true "TA-Lib Demo")
