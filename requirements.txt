@@ -4,3 +4,6 @@ pandas_datareader
 yfinance
 quandl
 seaborn
+pandas_ta
+ta
+bta-lib
